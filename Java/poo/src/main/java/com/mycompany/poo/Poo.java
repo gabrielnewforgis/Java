@@ -14,7 +14,7 @@ public class Poo {
         int op = 99;
 
         while (op != 7) {
-            String input = JOptionPane.showInputDialog(null, "Escolha uma opção:\n1-Cadastro\n2-Deletar\n3-Credito\n4-Debito\n7-Sair");
+            String input = JOptionPane.showInputDialog(null, "Escolha uma opção:\n1- Cadastro\n2- Deletar usuário\n3- Credito\n4- Debito\n5- Busca de usuário\n7- Sair", "Banco Senac", JOptionPane.PLAIN_MESSAGE);
             op = Integer.parseInt(input);
  
             switch (op) {
@@ -44,6 +44,18 @@ public class Poo {
                     String debitar = JOptionPane.showInputDialog(null, "Insira o ID do usuário", "Debito", JOptionPane.PLAIN_MESSAGE);
                     usuario.debito(dados, debitar);
                 break;
+                }
+                case 5 -> {
+                    String mostrar = JOptionPane.showInputDialog(null, "Insira o ID do usuário que você deseja procurar: ", "Debito", JOptionPane.PLAIN_MESSAGE);
+                    if (usuario.getId().equals(mostrar)) {
+                        JOptionPane.showMessageDialog(null, "Usuário encontrado!\n", "Procurar", JOptionPane.PLAIN_MESSAGE);
+                        JOptionPane.showMessageDialog(null,usuario.toString(), "Procurar", JOptionPane.PLAIN_MESSAGE);   
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Procurar", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                case 6 -> {
+                    
                 }
             }
         }

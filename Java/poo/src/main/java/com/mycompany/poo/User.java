@@ -93,7 +93,7 @@ public class User {
         for (User usuario : dados) {
             if (usuario.getId().equals(id)) {
                 encontrado = true;
-                int confirm = JOptionPane.showConfirmDialog(null, "Você realmente deseja deletar o usuário " + usuario.getNome() + "?", "Deletar", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(null, "Você realmente deseja deletar o usuário " + usuario.nome + "?", "Deletar", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     dados.remove(usuario);
                     JOptionPane.showMessageDialog(null, "Usuário deletado com sucesso!", "Deletar", JOptionPane.PLAIN_MESSAGE);
@@ -111,7 +111,7 @@ public class User {
     public void credito(ArrayList<User> dados, String id) {
         for (User usuario : dados) {
             if (usuario.getId().equals(id)) {
-                float credito = Float.parseFloat(JOptionPane.showInputDialog(null, "Saldo atual: " + usuario.getValor() + "\nInsira o valor a ser depositado", "Credito", JOptionPane.PLAIN_MESSAGE));
+                float credito = Float.parseFloat(JOptionPane.showInputDialog(null, "Usuário: " + usuario.nome + "\nSaldo atual: " + usuario.getValor() + "\nInsira o valor a ser depositado", "Credito", JOptionPane.PLAIN_MESSAGE));
                 usuario.setValor(usuario.getValor() + credito);
                 int index = dados.indexOf(usuario);
                 dados.set(index, usuario);
@@ -124,7 +124,7 @@ public class User {
     public void debito(ArrayList<User> dados, String id) {
         for (User usuario : dados) {
             if (usuario.getId().equals(id)) {
-                float debito = Float.parseFloat(JOptionPane.showInputDialog(null, "Saldo atual: " + usuario.getValor() + "\nInsira o valor a ser depositado", "Debito", JOptionPane.PLAIN_MESSAGE));
+                float debito = Float.parseFloat(JOptionPane.showInputDialog(null, "Usuário: " + usuario.nome + "\nSaldo atual: " + usuario.getValor() + "\nInsira o valor a ser sacado", "Debito", JOptionPane.PLAIN_MESSAGE));
                 usuario.setValor(usuario.getValor() - debito);
                 int index = dados.indexOf(usuario);
                 dados.set(index, usuario);
