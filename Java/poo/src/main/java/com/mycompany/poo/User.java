@@ -133,4 +133,13 @@ public class User {
             }
         }
     }
+    public void atualizar(ArrayList<User> dados, String id){
+        for (User usuario : dados) {
+             if (usuario.getId().equals(id)) {
+                 String celular = JOptionPane.showInputDialog(null, "Número de celular atual:"+ usuario.getCel() +"\nInsira o novo número de celular: ", "Atualizar", JOptionPane.PLAIN_MESSAGE);
+                 usuario.setCel(celular);
+                 JOptionPane.showMessageDialog(null, "Número de telefone atualizado com sucesso!\n Número atual: "+ usuario.cel);
+             }
+        }
+    }
 }
