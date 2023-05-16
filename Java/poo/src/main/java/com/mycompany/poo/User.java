@@ -102,9 +102,9 @@ public class User {
                     JOptionPane.showMessageDialog(null, "Operação cancelada!", "Deletar", JOptionPane.ERROR_MESSAGE);
                 }
             }
-        }
-        if (!encontrado) {
-            JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Deletar", JOptionPane.ERROR_MESSAGE);
+         }
+       {
+            JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Deletar", JOptionPane.ERROR_MESSAGE);        
         }
     }
 
