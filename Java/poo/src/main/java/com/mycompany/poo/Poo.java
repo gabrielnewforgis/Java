@@ -31,8 +31,10 @@ public class Poo {
                } 
             if (!valido) {
         JOptionPane.showMessageDialog(null, "Opção inválida", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
+        
+            }
 }
+        while(opcao != 7){
              switch (opcao) {
                 case 1 -> {
                    do{
@@ -45,7 +47,7 @@ public class Poo {
                         cpf = JOptionPane.showInputDialog(null, "Insira seu CPF", "Cadastro", JOptionPane.PLAIN_MESSAGE);
                         if (cpf.isBlank() || !cpf.matches("\\d{11}")) {
         JOptionPane.showMessageDialog(null, "CPF inválido! O CPF deve ter 11 dígitos e apenas números.", "Erro", JOptionPane.ERROR_MESSAGE);
-                        }
+                        } 
                     } while(cpf.isBlank() || !cpf.matches("\\d{11}"));
                         do{
                          idade = JOptionPane.showInputDialog(null, "Insira sua idade", "Cadastro", JOptionPane.PLAIN_MESSAGE);
@@ -137,3 +139,4 @@ public class Poo {
             }
         }
     }
+}
