@@ -90,39 +90,44 @@ public class User {
 // Método para deletar um usuário da lista de dados
 
     public void deletar(ArrayList<User> dados) {
+        boolean idValido = false;
         String delete;
         // Solicita o ID do usuário a ser deletado           
         do {
             delete = JOptionPane.showInputDialog(null, "Insira o ID do usuário que deseja deletar", "Deletar", JOptionPane.PLAIN_MESSAGE);
             // Verifica se o botão "Cancelar" foi pressionado
             if (delete == null) {
-    return;
+                return;
             }
 // Verifica se o ID do usuário atual corresponde ao ID informado
-            if (delete.isBlank() || delete.matches(".*\\d.*")) {
+            if (delete.isBlank() || !delete.matches(".*\\d.*")) {
                 JOptionPane.showMessageDialog(null, "ID inválido", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } while (delete.isBlank() || delete.matches(".*\\d.*"));
+        } while (delete.isBlank() || !delete.matches(".*\\d.*"));
         for (User usuario : dados) {
-            if (usuario.getId().equals(id)) {
+            if (usuario.getId().equals(delete)) {
                 // Exibe uma confirmação para deletar o usuário
                 int confirm = JOptionPane.showConfirmDialog(null, "Você realmente deseja deletar o usuário " + usuario.getNome() + "?", "Deletar", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    // Remove o usuário da lista
+// Remove o usuário da lista
                     dados.remove(usuario);
                     JOptionPane.showMessageDialog(null, "Usuário deletado com sucesso!", "Deletar", JOptionPane.PLAIN_MESSAGE);
                     return;
                 } else {
                     JOptionPane.showMessageDialog(null, "Operação cancelada!", "Deletar", JOptionPane.ERROR_MESSAGE);
                 }
+                idValido = true;
+                break;
             }
+
         }
-        {
-            // Se o usuário não for encontrado na lista exibe uma mensagem de erro 
-            JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Deletar", JOptionPane.ERROR_MESSAGE);
+        if (!idValido) {
+            JOptionPane.showMessageDialog(null, "Usuário inválido", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 //Método para adicionar crédito ao saldo do usuário
+    boolean idValido2 = false;
 
     public void credito(ArrayList<User> dados) {
         String creditar;
@@ -134,15 +139,15 @@ public class User {
                 return;
             }
 // Verifica se o ID está em branco ou contém caracteres numéricos
-            if (creditar.isBlank() || creditar.matches(".*\\d.*")) {
+            if (creditar.isBlank() || !creditar.matches(".*\\d.*")) {
                 JOptionPane.showMessageDialog(null, "ID inválido", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } while (creditar.isBlank() || creditar.matches(".*\\d.*"));
+        } while (creditar.isBlank() || !creditar.matches(".*\\d.*"));
         for (User usuario : dados) {
             // Verifica se o ID do usuário atual corresponde ao ID informado
-            if (usuario.getId().equals(id)) {
+            if (usuario.getId().equals(creditar)) {
                 // Solicita o valor a ser creditado e converte para float
-                String input = JOptionPane.showInputDialog(null, "Usuário: " + usuario.getNome() + "\nSaldo atual: " + usuario.getValor() +  "R$" + "\nInsira o valor a ser depositado", "Credito", JOptionPane.PLAIN_MESSAGE);
+                String input = JOptionPane.showInputDialog(null, "Usuário: " + usuario.getNome() + "\nSaldo atual: " + usuario.getValor() + "R$" + "\nInsira o valor a ser depositado", "Credito", JOptionPane.PLAIN_MESSAGE);
                 // Verifica se o botão "Cancelar" foi pressionado
                 if (input == null) {
                     return;
@@ -163,13 +168,18 @@ public class User {
                     //Else caso o usuário insira um caracter inválido
                     JOptionPane.showMessageDialog(null, "Valor inválido! Insira um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
-
+                idValido2 = true;
+                break;
             }
         }
+        if (!idValido2) {
+            JOptionPane.showMessageDialog(null, "Usuário inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }
-// Método para realizar saque do saldo do usuário
 
+// Método para realizar saque do saldo do usuário
     public void debito(ArrayList<User> dados) {
+        boolean idValido3 = false;
         String debitar;
         // Solicita o ID do usuário para realizar o débito            
         do {
@@ -185,7 +195,7 @@ public class User {
         } while (debitar.isBlank() || !debitar.matches("\\d+"));
         for (User usuario : dados) {
             // Verifica se o ID do usuário atual corresponde ao ID informado
-            if (usuario.getId().equals(id)) {
+            if (usuario.getId().equals(debitar)) {
                 // Solicita o valor a ser debitado e converte para float
                 String input = JOptionPane.showInputDialog(null, "Usuário: " + usuario.getNome() + "\nSaldo atual: " + usuario.getValor() + " R$" + "\nInsira o valor a ser depositado", "Credito", JOptionPane.PLAIN_MESSAGE);
                 // Verifica se o botão "Cancelar" foi pressionado
@@ -208,46 +218,52 @@ public class User {
                     //Else caso o usuário insira um caracter inválido
                     JOptionPane.showMessageDialog(null, "Valor inválido! Insira um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
-
+                idValido3 = true;
+                break;
             }
+        }
+        if (!idValido3) {
+            JOptionPane.showMessageDialog(null, "Usuário inválido", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     // Método para procurar um usuário pelo ID e exibir suas informações
     public void mostrar(ArrayList<User> dados) {
+        boolean idValido4 = false;
         String mostrar;
         // Solicita o ID do usuário que deseja procurar
         do {
             mostrar = JOptionPane.showInputDialog(null, "Insira o ID do usuário que você deseja procurar: ", "Debito", JOptionPane.PLAIN_MESSAGE);
-            // Verifica se o botão "Cancelar" foi pressionado
             if (mostrar == null) {
                 return;
             }
-// Verifica se o ID está em branco ou contém caracteres numéricos
-            if (mostrar.isBlank() || !mostrar.matches(".*\\d.*")) {
+            // Verifica se o ID está em branco ou contém caracteres numéricos  
+            if (mostrar.isBlank() || !mostrar.matches("\\d+")) {
                 JOptionPane.showMessageDialog(null, "ID inválido", "Erro", JOptionPane.ERROR_MESSAGE);
             }
+// Verifica se o botão "Cancelar" foi pressionado
         } while (mostrar.isBlank() || !mostrar.matches(".*\\d.*"));
-        boolean encontrado = false;
+
         for (User usuario : dados) {
             // Verifica se o ID do usuário atual corresponde ao ID informado
             if (usuario.getId().equals(mostrar)) {
-                encontrado = true;
                 // Exibe uma mensagem informando que o usuário foi encontrado
                 JOptionPane.showMessageDialog(null, "Usuário encontrado!\n", "Procurar", JOptionPane.PLAIN_MESSAGE);
                 // Exibe as informações do usuário
                 JOptionPane.showMessageDialog(null, usuario.toString(), "Procurar", JOptionPane.PLAIN_MESSAGE);
+                idValido4 = true;
                 break;
             }
+
         }
-// Se o usuário não foi encontrado, exibe uma mensagem de erro
-        if (!encontrado) {
-            JOptionPane.showMessageDialog(null, "Usuário não encontrado!", "Procurar", JOptionPane.ERROR_MESSAGE);
+        if (!idValido4) {
+            JOptionPane.showMessageDialog(null, "Usuário inválido", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     // Método para atualizar o número de celular de um usuário
     public void atualizar(ArrayList<User> dados) {
+        boolean idValido5 = false;
         String atualizar;
         // Solicita o ID do usuário que deseja atualizar
         do {
@@ -267,7 +283,7 @@ public class User {
                 do {
                     // Solicita o novo número de celular e mostra o atual
                     celular = JOptionPane.showInputDialog(null, "Usuário: " + usuario.getNome() + "\nNúmero de celular atual: " + usuario.getCel() + "\nInsira o novo número de celular (9 dígitos): ", "Atualizar", JOptionPane.PLAIN_MESSAGE);
-                   // Verifica se o botão "Cancelar" foi pressionado
+                    // Verifica se o botão "Cancelar" foi pressionado
                     if (celular == null) {
                         return;
                     }
@@ -275,12 +291,18 @@ public class User {
                         JOptionPane.showMessageDialog(null, "Número de celular inválido! O número deve ter 9 dígitos.", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
                 } while (celular.isBlank() || !celular.matches("\\d{9}"));
-
                 // Atualiza o número de celular do usuário
                 usuario.setCel(celular);
+
                 // Exibe uma mensagem de sucesso com o número de celular atualizado
                 JOptionPane.showMessageDialog(null, "Número de telefone atualizado com sucesso!\nNúmero atual: " + usuario.getCel());
+                idValido5 = true;
+                break;
             }
+
+        }
+        if (!idValido5) {
+            JOptionPane.showMessageDialog(null, "Usuário inválido", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

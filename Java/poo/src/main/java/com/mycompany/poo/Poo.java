@@ -22,12 +22,13 @@ public class Poo {
         boolean valido = false;
 
         // Menu principal
-        menu: while (opcao != 7) {
+        menu:
+        while (opcao != 7) {
             // Exibe o menu e obtém a opção do usuário
             op = JOptionPane.showInputDialog(null, "Escolha uma opção:\n1- Cadastro\n2- Deletar usuário\n3- Credito\n4- Debito\n5- Busca de usuário\n6- Atualizar\n7- Sair", "Banco Senac", JOptionPane.PLAIN_MESSAGE);
             if (op == null) {
-                            return;
-                        }
+                return;
+            }
 // Valida se a opção é um número válido
             if (op.matches("\\d+")) {
                 opcao = Integer.parseInt(op);
@@ -59,7 +60,7 @@ public class Poo {
                         cpf = JOptionPane.showInputDialog(null, "Insira seu CPF", "Cadastro", JOptionPane.PLAIN_MESSAGE);
                         // Verifica se o botão "Cancelar" foi pressionado
                         if (cpf == null) {
-                             continue menu;
+                            continue menu;
                         }
                         if (cpf.isBlank() || !cpf.matches("\\d{11}")) {
                             JOptionPane.showMessageDialog(null, "CPF inválido! O CPF deve ter 11 dígitos e apenas números.", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -69,7 +70,7 @@ public class Poo {
                         idade = JOptionPane.showInputDialog(null, "Insira sua idade", "Cadastro", JOptionPane.PLAIN_MESSAGE);
                         // Verifica se o botão "Cancelar" foi pressionado
                         if (idade == null) {
-                             continue menu;
+                            continue menu;
                         }
                         if (idade.isBlank() || idade.matches(".*\\D.*")) {
                             JOptionPane.showMessageDialog(null, "A idade não pode ser deixada em branco e precisa conter apenas números", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -79,18 +80,18 @@ public class Poo {
                         celular = JOptionPane.showInputDialog(null, "Insira seu número de celular", "Cadastro", JOptionPane.PLAIN_MESSAGE);
                         // Verifica se o botão "Cancelar" foi pressionado
                         if (celular == null) {
-                             continue menu;
+                            continue menu;
                         }
                         if (celular.isBlank() || !celular.matches("\\d{9}")) {
                             JOptionPane.showMessageDialog(null, "Número de celular inválido! O número deve ter 9 dígitos.", "Erro", JOptionPane.ERROR_MESSAGE);
                         }
                     } while (celular.isBlank() || !celular.matches("\\d{9}"));
                     do {
-                        
+
                         id = JOptionPane.showInputDialog(null, "Insira seu ID", "Cadastro", JOptionPane.PLAIN_MESSAGE);
                         // Verifica se o botão "Cancelar" foi pressionado
                         if (id == null) {
-                             continue menu;
+                            continue menu;
                         }
                         if (id.isBlank() || !id.matches(".*\\d.*")) {
                             JOptionPane.showMessageDialog(null, "ID inválido", "Erro", JOptionPane.ERROR_MESSAGE);
